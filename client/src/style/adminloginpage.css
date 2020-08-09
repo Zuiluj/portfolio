@@ -1,0 +1,59 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.login_parent {
+    margin: 2rem;
+    display: flex;
+    flex-direction: row;
+    height: 50rem;
+    justify-content: center;
+}
+
+.login_welcome {
+    width: 50%;
+    text-align: center;
+    padding: 5rem;
+    font-size: 60px;
+
+    background: url('../img/ocean_login.webp');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: right;
+}
+
+.login_welcome h1 {
+    color: white;
+    font-family: 'Bree Serif';
+}
+
+.login_form {
+    width: 50%;
+    padding: 5rem;
+    align-self: center;
+}
+
+.login_form__custom_error {
+    color: #E33E36;
+    text-align: center;
+}
+
+@media only screen and (max-width: 900px) {
+
+    .login_parent {
+        flex-direction: column;
+    }
+
+    .login_welcome {
+        width: 100%;
+    }
+
+    .login_form {
+        width: 100%;
+    }
+
+}

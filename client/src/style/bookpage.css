@@ -1,0 +1,32 @@
+html {
+    box-sizing: border-box;
+}
+
+*, *::before, *::after {
+    box-sizing: inherit;
+}
+
+.book_header {
+    text-align: center;
+
+    background: url('../img/ocean_books.jpg');
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.book_header__title {
+    padding: 10rem;
+    font-size: 50px;
+    background: rgb(0, 0, 0, 0.2);
+    color: white;
+}
+
+@media only screen and (max-width: 700px) {
+
+    .header__title {
+        padding: 5rem;
+    }
+
+}
