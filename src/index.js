@@ -16,8 +16,8 @@ const app = express()
 const PORT = process.env.PORT || 5000
 
 // Set static folder
-app.use(express.static('client/build'))
-app.use(express.static(path.join(__dirname, 'client/build')));
+app.use(express.static('react-ui/build'))
+app.use(express.static(path.join(__dirname, 'react-ui/build')));
 
 app.get('/*', function(req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
