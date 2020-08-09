@@ -18,9 +18,9 @@ const PORT = process.env.PORT || 5000
 // Set static folder
 app.use(express.static('client/build'))
 
-app.get('/*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'))
-})
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname, 'build', 'index.html'));
+  });
 
 const corsConfig = {
     origin: true,
