@@ -15,14 +15,14 @@ dotenv.config();
 const app = express()
 const PORT = process.env.PORT || 5000
 
-// Set static folder
-app.use(express.static('react-ui/build'))
-app.use(express.static(path.join(__dirname, 'react-ui/build')));
-
-app.get('/*', function(req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-  });
-
+if (process.env.NODE_ENV === 'production') {
+    // Set static folder
+    app.use(express.static('react-ui/build/'))
+    
+    app.get('*', function(req, res) {
+        res.sendFile(path.join(__dirname, 'react-ui', 'build', 'index.html'));
+      });    
+}
 const corsConfig = {
     origin: true,
     credentials: true,
