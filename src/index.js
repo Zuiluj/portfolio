@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 import path from 'path'
+import compression from 'compression';
 
 import { connect } from './utils/db.js'
 import { pubBlogRouter, authBlogRouter, authUploadRouter, pubTagRouter, authTagRouter } from './resources/blog/blog.router'
@@ -30,6 +31,7 @@ const corsConfig = {
 }
 
 // Middlewares
+app.use(compression())
 app.use(cookieParser())
 app.use(cors(corsConfig))
 app.options('*', cors(corsConfig))
