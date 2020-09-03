@@ -48,15 +48,14 @@ app.use('/api/auth/admin', adminRouter)
 app.use('/api/auth/newKey', generateSecretKey)
 app.use('/api/auth/logout', logoutAdmin)
 
-// Set static folder
-app.use(express.static('client/build'))
+if (process.env.NODE_ENV === 'production') {
+    // Set static folder
+    app.use(express.static('client/build'))
 
-// app.get('*', function(req, res) {
-//     res.sendFile(path.resolve(__dirname, '/app/client/build/index.html'));
-//     });    
-app.get('*', function(req, res) {
-    res.sendFile(path.resolve(__dirname, '../client/build/index.html'));
-    });
+    app.get('*', function(req, res) {
+        res.sendFile(path.resolve(__dirname, '/app/client/build/index.html'));
+        });    
+}
 
 // Start function
 const start = async () => {
