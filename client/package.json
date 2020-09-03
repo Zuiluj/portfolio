@@ -35,8 +35,7 @@
   },
   "scripts": {
     "start": "react-app-rewired start",
-    "build": "react-app-rewired build",
-    "postbuild": "react-snap",
+    "build": "react-app-rewired build && react-snapshot",
     "test": "react-app-rewired test",
     "eject": "react-scripts eject"
   },
