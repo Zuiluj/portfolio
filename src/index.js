@@ -3,7 +3,6 @@ import cors from 'cors';
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 import path from 'path'
-import compression from 'compression';
 
 import { connect } from './utils/db.js'
 import { pubBlogRouter, authBlogRouter, authUploadRouter, pubTagRouter, authTagRouter } from './resources/blog/blog.router'
@@ -16,6 +15,14 @@ dotenv.config();
 const app = express()
 const PORT = process.env.PORT || 5000
 
+if (process.env.NODE_ENV === 'production') {
+    // Set static folder
+    app.use(express.static('client/build'))
+
+    app.get('*', function(req, res) {
+        res.sendFile(path.resolve(__dirname, '/app/client/build/index.html'));
+      });    
+}
 
 const corsConfig = {
     origin: true,
