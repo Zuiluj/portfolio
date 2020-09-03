@@ -10,6 +10,7 @@ export const connect = (uri=ONLINE_MONGODB) => {
         uri,
         { 
             useNewUrlParser: true,
+            useUnifiedTopology: true,
             useFindAndModify: false
         },
     )
