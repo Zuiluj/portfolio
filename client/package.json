@@ -30,9 +30,6 @@
     "react-scripts": "3.4.0",
     "react-snapshot": "^1.3.0"
   },
-  "reactSnap": {
-    "inlineCss": true
-  },
   "scripts": {
     "start": "react-app-rewired start",
     "build": "react-app-rewired build && react-snapshot",

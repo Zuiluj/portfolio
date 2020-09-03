@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import 'antd/dist/antd.less';
 import { Layout, Row, Col, Divider, Input, Button, Form, notification } from 'antd';
 
 import Jump from 'react-reveal/Jump';
