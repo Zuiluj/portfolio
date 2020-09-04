@@ -34,7 +34,7 @@ export default class HomePage extends Component {
 
     sendEmail(props) {
         // connect to API to login
-        axios.post('http://localhost:5000/api/send_mail', {
+        axios.post('/api/send_mail', {
             name: props.name,
             email: props.email,
             message: props.message

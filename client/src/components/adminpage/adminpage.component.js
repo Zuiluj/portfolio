@@ -52,7 +52,7 @@ export default class AdminPage extends Component {
 
     componentDidMount() {
         // Call the api and reload this.state.blogs
-        axios.get('http://localhost:5000/api/blogs?page=0')
+        axios.get('/api/blogs?page=0')
         .then( (response) => {
             this.setState({
                 blogs: response.data.data
@@ -66,7 +66,7 @@ export default class AdminPage extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevState.currentBlogId !== this.state.currentBlogId) {
-            axios.get('http://localhost:5000/api/blogs/')
+            axios.get('/api/blogs/')
                 .then( (response) => {
                     this.setState({
                         blogs: response.data.data
@@ -126,7 +126,7 @@ export default class AdminPage extends Component {
         let blog_id = this.state.currentBlogId
 
         if (this.state.isUpdateReq) {
-            axios.put(`http://localhost:5000/api/auth/blogs/${blog_id}`, {
+            axios.put(`/api/auth/blogs/${blog_id}`, {
                 title: props.blog_title,
                 tags: props.blog_tags,
                 content: textContent
@@ -154,7 +154,7 @@ export default class AdminPage extends Component {
                         this.openNotif('Error!', 'error', JSON.stringify(err.response.data) || JSON.stringify(err.message))
                     })
         } else {
-            axios.post('http://localhost:5000/api/auth/blogs/', {
+            axios.post('/api/auth/blogs/', {
                 title: props.blog_title,
                 tags: props.blog_tags,
                 content: textContent
@@ -185,7 +185,7 @@ export default class AdminPage extends Component {
 
     async handleBlogImgUpload(file) {
         var clientId = ''
-        await axios.get('http://localhost:5000/api/auth/photos/upload')
+        await axios.get('/api/auth/photos/upload')
             .then( (response) => {
                 clientId = response.data.imgUploadKey
             })
@@ -223,7 +223,7 @@ export default class AdminPage extends Component {
         this.setState({
             confirmLoading: true
         })
-        axios.delete(`http://localhost:5000/api/auth/blogs/${this.state.currentBlogId}`)
+        axios.delete(`/api/auth/blogs/${this.state.currentBlogId}`)
             .then( (response) => {
                 if (response.status === 200) {
                     this.setState({
@@ -368,7 +368,7 @@ export default class AdminPage extends Component {
                         <PageSwitcher 
                             page={this.state.currentBlogPage}
                             nextPageHandler={this.handleBlogPage}
-                            url={`http://localhost:5000/api/blogs`}
+                            url={`/api/blogs`}
                         />
                     </div>
                 </Content>
@@ -392,7 +392,7 @@ class AdminBlogTags extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/api/blogs/tags')
+        axios.get('/api/blogs/tags')
         .then( (response) => {
             this.setState({
                 tags: response.data.data

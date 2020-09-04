@@ -19,7 +19,7 @@ export default class AdminLoginPage extends Component {
 
     loginUser(props) {
         // connect to API to login
-        axios.post('http://localhost:5000/api/login/', {
+        axios.post('/api/login/', {
             username: props.username,
             password: props.password
         })

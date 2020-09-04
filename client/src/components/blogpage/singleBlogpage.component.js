@@ -35,7 +35,7 @@ export default class SingleBlog extends Component {
     }
 
     componentDidMount() {
-        axios.get(`http://localhost:5000/api/blogs/${this.props.match.params.id}/${this.props.match.params.slug}`)
+        axios.get(`/api/blogs/${this.props.match.params.id}/${this.props.match.params.slug}`)
             .then( response => {
                 this.setState({
                     title: response.data.data.title,

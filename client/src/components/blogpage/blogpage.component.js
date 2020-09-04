@@ -29,7 +29,7 @@ export default class BlogPage extends Component {
 
     getBlogs() {
         this.setState({ loading: true });
-        axios.get(`http://localhost:5000/api/blogs?page=${this.state.page}`)
+        axios.get(`/api/blogs?page=${this.state.page}`)
             .then( (res) => {
                 if (res.data.data.length > 0) {
                     this.setState({
@@ -69,7 +69,7 @@ export default class BlogPage extends Component {
     
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevProps.location !== this.props.location) {
-            axios.get(`http://localhost:5000/api/blogs${this.props.location.search}`)
+            axios.get(`/api/blogs${this.props.location.search}`)
                 .then( (response) => {
                     this.setState({
                         blogs: response.data.data
@@ -157,7 +157,7 @@ class BlogsFilter extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/api/blogs/tags')
+        axios.get('/api/blogs/tags')
         .then( (response) => {
             this.setState({
                 tags: response.data.data

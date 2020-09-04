@@ -16,15 +16,9 @@ dotenv.config();
 const app = express()
 const PORT = process.env.PORT || 5000
 
-var whitelist = process.env.ALLOWED_ORIGINS.split(' ')
-var corsOptions = {
-  origin: function (origin, callback) {
-    if (whitelist.indexOf(origin) !== -1) {
-      callback(null, true)
-    } else {
-      callback(new Error('Not allowed by CORS'))
-    }
-  }
+const corsConfig = {
+    origin: true,
+    credentials: true,
 }
 
 // Middlewares
@@ -33,8 +27,8 @@ app.use(compression({
 }))
 app.use(cookieParser())
 app.use(express.json())
+app.options('*', cors(corsConfig))
 
-app.use('/api', cors(corsOptions))
 // Public Admin endpoint
 app.use('/api/login', checkAdmin)
 
