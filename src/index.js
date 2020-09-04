@@ -3,6 +3,7 @@ import cors from 'cors';
 import dotenv from 'dotenv'
 import cookieParser from 'cookie-parser'
 import path from 'path'
+import compression from 'compression'
 
 import { connect } from './utils/db.js'
 import { pubBlogRouter, authBlogRouter, authUploadRouter, pubTagRouter, authTagRouter } from './resources/blog/blog.router'
@@ -15,11 +16,25 @@ dotenv.config();
 const app = express()
 const PORT = process.env.PORT || 5000
 
+var whitelist = process.env.ALLOWED_ORIGINS.split(' ')
+var corsOptions = {
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  }
+}
+
 // Middlewares
+app.use(compression({
+    level: 9
+}))
 app.use(cookieParser())
-app.use(cors())
 app.use(express.json())
 
+app.use('/api', cors(corsOptions))
 // Public Admin endpoint
 app.use('/api/login', checkAdmin)
 
