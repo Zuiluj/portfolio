@@ -15,15 +15,9 @@ dotenv.config();
 const app = express()
 const PORT = process.env.PORT || 5000
 
-const corsConfig = {
-    origin: true,
-    credentials: true,
-}
-
 // Middlewares
 app.use(cookieParser())
-app.use(cors(corsConfig))
-app.options('*', cors(corsConfig))
+app.use(cors())
 app.use(express.json())
 
 // Public Admin endpoint
