@@ -155,10 +155,10 @@ export default class HomePage extends Component {
                 
                 <div className="about"> 
                     <div className="about__text">
-                        Hello! I'm a full-stack developer who aims to give your business 
-                        a remarkable online presence. Solutions to further increase
-                        your leads by bringing new audience and also upsells to 
-                        increase your sales
+                    I'm  a  full-stack  developer  who  enjoys  building creative  solutions  to  complex  problems.
+                    I  love learning  new  technologies  as  it  expands  my mind's  library  for  more  innovative
+                    features. Interested  in  creating  crazy  animations  andmodern  sites  using  ever-evolving  
+                    JavaScript and implementing complex architectures with Python.
                     </div>
                 </div>
 
@@ -178,7 +178,7 @@ export default class HomePage extends Component {
                     <div className="contact__form">
 
                         <h5>
-                            Send me your problem and let's talk about how we can solve it
+                            Want to contact me? Just fill this form and send it!
                         </h5>
                         
                         <Form onFinish={ this.sendEmail } ref={this.contactFormRef}>
