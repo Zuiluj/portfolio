@@ -24,7 +24,7 @@ export default class AdminBlogModifyTags extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/api/blogs/tags')
+        axios.get('/api/blogs/tags')
         .then( (response) => {
             this.setState({
                 tags: response.data.data
@@ -37,7 +37,7 @@ export default class AdminBlogModifyTags extends Component {
 
     componentDidUpdate(prevProps, prevState, snapshot) {
         if (prevState.currentTagId !== this.state.currentTagId) {
-            axios.get('http://localhost:5000/api/blogs/tags')
+            axios.get('/api/blogs/tags')
                 .then( (response) => {
                     this.setState({
                         tags: response.data.data
@@ -81,7 +81,7 @@ export default class AdminBlogModifyTags extends Component {
         this.setState({
             modalConfirmLoading: true
         })
-        axios.delete(`http://localhost:5000/api/auth/blogs/tags/${this.state.currentTagId}`)
+        axios.delete(`/api/auth/blogs/tags/${this.state.currentTagId}`)
             .then( (response) => {
                 if (response.status === 200) {
                     this.setState({
@@ -169,7 +169,7 @@ class AdminBlogCreateTag extends Component {
     }
 
     submitTag(props) {
-        axios.post('http://localhost:5000/api/auth/blogs/tags', {
+        axios.post('/api/auth/blogs/tags', {
                 name: props.tag_name
             })
                 .then( (response) => {

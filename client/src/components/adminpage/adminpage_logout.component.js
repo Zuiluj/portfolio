@@ -12,7 +12,7 @@ export default class LogoutButton extends Component {
     }
     
     logout(props) {
-        axios.get('http://localhost:5000/api/auth/logout')
+        axios.get('/api/auth/logout')
             .then( (response) => {
                 // Redirect after successful login
                 if (response.status === 200) {

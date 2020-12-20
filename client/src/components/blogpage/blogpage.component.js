@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { NavLink } from 'react-router-dom';
+import { navigate } from "@reach/router";
+import { Link, graphql } from "gatsby";
 import { Layout, Card, notification, Tag, Form, Select, DatePicker, Button, Input } from 'antd';
 import { stateToHTML } from 'draft-js-export-html';
 import 'antd/dist/antd.less';
@@ -29,9 +30,9 @@ export default class BlogPage extends Component {
 
     getBlogs() {
         this.setState({ loading: true });
-        axios.get(`http://localhost:5000/api/blogs?page=${this.state.page}`)
+        axios.get(`/api/blogs?page=${this.state.page}`)
             .then( (res) => {
-                if (res.data.data.length > 0) {
+                if (res.data.data.length > 0 && res.data.data !== this.blogs) {
                     this.setState({
                         blogs: [...this.state.blogs, ...res.data.data],
                         loading: false,
@@ -68,8 +69,10 @@ export default class BlogPage extends Component {
     }
     
     componentDidUpdate(prevProps, prevState, snapshot) {
+        // TODO: Look for prevProps.location && this.props.location equivalent for gatsby
+        console.log('UPDATE')
         if (prevProps.location !== this.props.location) {
-            axios.get(`http://localhost:5000/api/blogs${this.props.location.search}`)
+            axios.get(`/api/blogs${this.props.location.search}`)
                 .then( (response) => {
                     this.setState({
                         blogs: response.data.data
@@ -117,7 +120,7 @@ export default class BlogPage extends Component {
                                     hoverable 
                                     title={ blog.title } 
                                     className="a_blog"
-                                    extra={ <NavLink to={"/blogs/" + blog._id + "/" + blog.slug }> Read more </NavLink >} 
+                                    extra={ <Link to={"/blogs/" + blog.slug }> Read more </Link >} 
                                     key={ blog._id }
                                 >
                                     <div className="content_peek">
@@ -157,7 +160,7 @@ class BlogsFilter extends Component {
     }
 
     componentDidMount() {
-        axios.get('http://localhost:5000/api/blogs/tags')
+        axios.get('/api/blogs/tags')
         .then( (response) => {
             this.setState({
                 tags: response.data.data
@@ -180,7 +183,7 @@ class BlogsFilter extends Component {
         }
 
         const transformedParams = queryString.stringify(rawParams)
-        this.props.reactHistory.push(`/blogs?${transformedParams}`)
+        navigate(`/blogs?${transformedParams}`)
     }
 
     render() {

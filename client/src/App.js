@@ -1,5 +1,5 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, withRouter } from 'react-router-dom';
+import { Router } from "@reach/router"
 import { Layout } from 'antd';
 
 import { PrivateRoute } from './components/adminpage/privateroute.component';
