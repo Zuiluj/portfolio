@@ -1,5 +1,6 @@
-import React, { Component } from 'react';
 import { Layout, Input, Button, Form } from 'antd';
+import React, { Component } from 'react';
+import { navigate } from "@reach/router";
 import axios from 'axios';
 import 'antd/dist/antd.less';
 
@@ -13,7 +14,6 @@ export default class AdminLoginPage extends Component {
         this.state = {
             form_error: ""
         }
-
         this.loginUser = this.loginUser.bind(this)
     }
 
@@ -26,19 +26,18 @@ export default class AdminLoginPage extends Component {
             .then( (response) => {
                 // Redirect after successful login
                 if (response.status === 200) {
-                    this.props.history.push('/admin')
+                    navigate(this.props.redirectPath)
                 }
-                
             })
             .catch( (err) => {
                 this.setState({
                     form_error: "Wrong username or password"
                 })
             })
-        
     }
 
     render() {
+        console.log('@ADMIN LOGIN')
         return (
             <Layout>
                 <Header></Header>

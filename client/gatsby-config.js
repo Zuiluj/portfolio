@@ -18,8 +18,8 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `juliuz-portolio`,
+        short_name: `julz-web`,
         start_url: `/`,
         background_color: `#663399`,
         theme_color: `#663399`,
@@ -40,21 +40,10 @@ module.exports = {
               javascriptEnabled: true,
             }
         }
-    },
+    }, 
     {
-      resolve: `gatsby-plugin-google-fonts`,
-      options: {
-        fonts: [
-          `Sen`,
-          `Bree Serif`,
-          `Reem Kufi`,
-          `Roboto Mono`,
-          `Noto Serif`,
-          `Unica One`,
-          `Josefin Sans`
-        ],
-        display: 'swap'
-      },
+      resolve: `gatsby-plugin-create-client-paths`,
+      options: { prefixes: [`/admin/*`] },
     },
   ],
 }

@@ -1,13 +1,19 @@
-import React from "react"
-import { Link } from "gatsby"
+import React from "react";
+import { Router } from "@reach/router";
 
-import Image from "../components/image"
-import SEO from "../components/seo"
-import Layout from "../components/layout"
+import Layout from "../components/layout";
+import Home from '../components/homepage/homepage.component';
+import AdminPage from "../components/adminpage/adminpage.component";
+import Login from "../components/adminpage/adminloginpage.component";
+import PrivateRoute from "../components/auth/privateroute.component";
+import '../style/homepage.css';
 
-import Home from '../components/homepage/homepage.component'
-import NavBar from '../components/allpage/navbar.component'
-import '../style/homepage.css'
+import "fontsource-sen";
+import "fontsource-bree-serif";
+import "fontsource-reem-kufi";
+import "fontsource-roboto-mono";
+import "fontsource-noto-serif";
+import "fontsource-josefin-sans";
 
 const Index = () => (
     <Layout>

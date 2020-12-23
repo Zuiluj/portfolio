@@ -280,7 +280,7 @@ export default class AdminPage extends Component {
                         lineHeight: '50px',
                         mixBlendMode: 'darken',
                         margin: '3rem 0',
-                        fontFamily: 'Unica One'
+                        fontFamily: 'Reem Kufi'
                 }}> BLOGS </Divider>
 
                 <Content>
@@ -338,7 +338,7 @@ export default class AdminPage extends Component {
                         lineHeight: '50px',
                         mixBlendMode: 'darken',
                         margin: '3rem 0',
-                        fontFamily: 'Unica One'
+                        fontFamily: 'Reem Kufi'
                 }}> MODIFY TAGS </Divider>
 
                 <AdminBlogModifyTags/>
@@ -349,7 +349,7 @@ export default class AdminPage extends Component {
                         lineHeight: '50px',
                         mixBlendMode: 'darken',
                         margin: '3rem 0',
-                        fontFamily: 'Unica One'
+                        fontFamily: 'Reem Kufi'
                 }}> MODIFY BLOGS </Divider>
 
                     <div className="modify_blogs">

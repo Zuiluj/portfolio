@@ -103,7 +103,7 @@ export default class HomePage extends Component {
                         lineHeight: '30px',
                         mixBlendMode: 'darken',
                         margin: '3rem 0',
-                        fontFamily: 'Unica One'
+                        fontFamily: 'Reem Kufi'
                     }}>
                         WEB WORKS
                     </Divider>
@@ -148,7 +148,7 @@ export default class HomePage extends Component {
                         lineHeight: '30px',
                         mixBlendMode: 'darken',
                         margin: '3rem 0',
-                        fontFamily: 'Unica One'
+                        fontFamily: 'Reem Kufi'
                     }}>
                         ABOUT ME
                 </Divider>
@@ -170,7 +170,7 @@ export default class HomePage extends Component {
                         lineHeight: '30px',
                         mixBlendMode: 'darken',
                         margin: '3rem 0',
-                        fontFamily: 'Unica One'
+                        fontFamily: 'Reem Kufi'
                     }}>
                         CONTACT
                     </Divider>

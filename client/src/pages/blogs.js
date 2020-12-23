@@ -13,4 +13,4 @@ const HomePage = (props) => (
     </Layout>
 )
   
-  export default HomePage
+export default HomePage

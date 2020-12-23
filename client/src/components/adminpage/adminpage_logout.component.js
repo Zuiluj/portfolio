@@ -1,5 +1,6 @@
 // Logout component. React history MUST be passed as a prop
 import React, { Component } from 'react';
+import { navigate } from "@reach/router";
 import { Button } from 'antd';
 import axios from 'axios';
 import 'antd/dist/antd.less';
@@ -16,11 +17,12 @@ export default class LogoutButton extends Component {
             .then( (response) => {
                 // Redirect after successful login
                 if (response.status === 200) {
-                    this.props.reactHistory.push('/admin/login')
+                    navigate('/admin/login')
                 }
                 
             })
             .catch( (err) => {
+                console.log(JSON.stringify(err))
                 this.setState({
                     form_error: "Wrong username or password"
                 })
