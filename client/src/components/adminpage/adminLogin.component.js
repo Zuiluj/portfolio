@@ -8,6 +8,7 @@ import '../../style/adminloginpage.css';
 
 const { Header, Content } = Layout
 
+axios.defaults.withCredentials = true;
 export default class AdminLoginPage extends Component {
     constructor(props) {
         super(props)
@@ -19,13 +20,14 @@ export default class AdminLoginPage extends Component {
 
     loginUser(props) {
         // connect to API to login
-        axios.post('/api/login/', {
+        axios.post('/api/login', {
             username: props.username,
             password: props.password
         })
             .then( (response) => {
                 // Redirect after successful login
                 if (response.status === 200) {
+                    console.log(`@ADMIN LOGGED IN. REDIRECT -> ${this.props.redirectPath}`)
                     navigate(this.props.redirectPath)
                 }
             })
@@ -37,7 +39,6 @@ export default class AdminLoginPage extends Component {
     }
 
     render() {
-        console.log('@ADMIN LOGIN')
         return (
             <Layout>
                 <Header></Header>

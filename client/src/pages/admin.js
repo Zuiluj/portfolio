@@ -4,13 +4,12 @@ import { Router } from "@reach/router";
 import Layout from "../components/layout";
 import PrivateRoute from "../components/auth/privateroute.component";
 import AdminPage from "../components/adminpage/adminpage.component";
-import LoginPage from "../components/adminpage/adminloginpage.component";
+import LoginPage from "../components/adminpage/adminLogin.component";
 
-const Admin = () => (
+const Admin = (props) => (
     <Layout>
-        {console.log('@ADMIN PAGE')}
         <Router>
-            <PrivateRoute path="/admin" component={AdminPage} />
+            <PrivateRoute path="/admin" component={AdminPage}/>
             <LoginPage path="/admin/login" redirectPath={"/admin"}/>
         </Router>
     </Layout>

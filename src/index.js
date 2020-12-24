@@ -72,4 +72,5 @@ const start = async () => {
 }
 
 // Start server
+export { app };
 start()

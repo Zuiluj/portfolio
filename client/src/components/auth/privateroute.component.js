@@ -1,10 +1,9 @@
 import React from 'react';
 import { navigate } from "@reach/router";
 import Cookies from 'js-cookie';
-import LoginPage from "../adminpage/adminloginpage.component"
+import LoginPage from '../adminpage/adminLogin.component';
 
 const PrivateRoute = ({ component: Component, location, ...rest }) => {
-
     const isLoggedIn = () => {
         if (Cookies.get('isAuthenticated')) {
             return true
@@ -13,8 +12,9 @@ const PrivateRoute = ({ component: Component, location, ...rest }) => {
         }
     }
 
-    if (!isLoggedIn() && location.pathname !== `/admin/login`) {
+    if (!isLoggedIn()) {
         navigate('/admin/login')
+        //return null
         return <LoginPage redirectPath={location.pathname}/>
     }
 
