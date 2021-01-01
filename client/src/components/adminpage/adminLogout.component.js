@@ -19,13 +19,14 @@ export default class LogoutButton extends Component {
                 if (response.status === 200) {
                     navigate('/admin/login')
                 }
-                
             })
             .catch( (err) => {
-                console.log(JSON.stringify(err))
-                this.setState({
-                    form_error: "Wrong username or password"
-                })
+                if (err.response.data.message.name == 'TokenExpiredError') {
+                    navigate('/admin/login')
+                } else {
+                    return err
+                }
+                
             })
     }
     

@@ -113,7 +113,7 @@ html {
 }
 
 .about__text {
-    font-size: 30px;
+    font-size: 1.5rem;
     text-align: right;
     width: 40%;
     color: white;
@@ -167,6 +167,7 @@ html {
 
     .about__text {
         width: 100%;
+        padding: 2rem;
     }
     
     .works_single__text a {

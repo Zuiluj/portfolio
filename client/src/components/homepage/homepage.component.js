@@ -5,7 +5,7 @@ import { Layout, Row, Col, Divider, Input, Button, Form, notification } from 'an
 import Jump from 'react-reveal/Jump';
 
 import '../../style/homepage.css'
-axios.defaults.baseURL = 'http://localhost:5000'
+import { postReq } from '../services/apiReq.component'
 
 const { Content } = Layout
 
@@ -33,9 +33,9 @@ export default class HomePage extends Component {
         })
     }
 
-    sendEmail(props) {
+    async sendEmail(props) {
         // connect to API to login
-        axios.post('/api/send_mail', {
+        await postReq('/api/send_mail', {
             name: props.name,
             email: props.email,
             message: props.message
@@ -62,7 +62,6 @@ export default class HomePage extends Component {
 
     componentDidMount() {
         this.changeCurrentTitle();
-
     }
 
     changeCurrentTitle() {

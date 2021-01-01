@@ -9,6 +9,7 @@ import { convertFromRaw } from 'draft-js';
 import queryString from 'query-string'
 import ReactHtmlParser from 'react-html-parser';
 
+import { getReq } from '../services/apiReq.component';
 import PageTitle from '../allpage/pageTitle.component';
 import '../../style/blogpage.css';
 
@@ -30,7 +31,7 @@ export default class BlogPage extends Component {
 
     getBlogs() {
         this.setState({ loading: true });
-        axios.get(`/api/blogs?page=${this.state.page}`)
+        getReq(`/api/blogs?page=${this.state.page}`)
             .then( (res) => {
                 if (res.data.data.length > 0 && res.data.data !== this.blogs) {
                     this.setState({
@@ -69,10 +70,8 @@ export default class BlogPage extends Component {
     }
     
     componentDidUpdate(prevProps, prevState, snapshot) {
-        // TODO: Look for prevProps.location && this.props.location equivalent for gatsby
-        console.log('UPDATE')
         if (prevProps.location !== this.props.location) {
-            axios.get(`/api/blogs${this.props.location.search}`)
+            getReq(`/api/blogs${this.props.location.search}`)
                 .then( (response) => {
                     this.setState({
                         blogs: response.data.data
@@ -92,16 +91,11 @@ export default class BlogPage extends Component {
     }
 
     render() {    
-
         // Additional css
         const loadingCSS = {
           height: "100px",
           margin: "30px"
         };
-    
-        // To change the loading icon behavior
-        const loadingTextCSS = { display: this.state.loading ? "block" : "none", padding: "10px" };
-    
 
         return (
             <Layout>
@@ -160,7 +154,7 @@ class BlogsFilter extends Component {
     }
 
     componentDidMount() {
-        axios.get('/api/blogs/tags')
+        getReq('/api/blogs/tags')
         .then( (response) => {
             this.setState({
                 tags: response.data.data

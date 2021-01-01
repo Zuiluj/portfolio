@@ -4,6 +4,7 @@ import { navigate } from "@reach/router";
 import axios from 'axios';
 import 'antd/dist/antd.less';
 
+import { postReq } from '../services/apiReq.component'
 import '../../style/adminloginpage.css';
 
 const { Header, Content } = Layout
@@ -18,16 +19,15 @@ export default class AdminLoginPage extends Component {
         this.loginUser = this.loginUser.bind(this)
     }
 
-    loginUser(props) {
+    async loginUser (props) {
         // connect to API to login
-        axios.post('/api/login', {
-            username: props.username,
-            password: props.password
+        await postReq('/api/login', { 
+            username: props.username, 
+            password: props.password 
         })
             .then( (response) => {
                 // Redirect after successful login
                 if (response.status === 200) {
-                    console.log(`@ADMIN LOGGED IN. REDIRECT -> ${this.props.redirectPath}`)
                     navigate(this.props.redirectPath)
                 }
             })

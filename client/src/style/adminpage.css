@@ -60,6 +60,81 @@ html {
     transition: 0.3s ease;
 }
 
+/* Admin Blog List */ 
+
+/* Update and Delete Blogs */
+.admin_blogs {
+    display: flex;
+    flex-direction: column;
+    max-height: 30rem;
+    overflow: scroll;
+    width: 80%;
+    margin: 0 auto;
+    overflow-x: hidden;
+}
+
+.admin_single_blog {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px auto;
+    min-width: 80%;
+    border-radius: 10px;
+}
+
+.admin_single_blog:hover {
+    box-shadow: 0px 0px 15px #bdbdbd;
+    transition: 0.3s ease;
+}
+
+.admin_single_blog__date {
+    margin: 0 20px;
+    color: #20959f;
+    font-size: 11px;
+}
+
+.admin_single_blog__title {
+    font-size: 20px;
+}
+
+.admin_single_blog__modify {
+}
+
+.admin_single_blog__modify_btn {
+    color: #20959f;
+    padding: 1rem;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    width: 50%;
+    font-size: 20px;
+}
+
+.modify_blogs {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+#edit_blog:hover {
+    background: #20959f;
+    color: white;
+    transition: 0.3s ease;
+}
+
+#delete_blog {
+    border-radius: 0 10px 10px 0;
+}
+
+#delete_blog:hover {
+    background: #fd3f40;
+    color: white;
+    transition: 0.3s ease;
+}
+
+
 /* Admin Parent */
 .admin {
     display: flex;
@@ -75,5 +150,43 @@ html {
 }
 
 @media only screen and (max-width: 800px) {
+    .submit_blog {
+        padding: 1rem;
+        width: 100%;
+    }
+    .admin_single_blog {
+        flex-direction: column;
+    }
 
+    .admin_single_blog__date {
+        margin: 20px;
+        color: #20959f;
+        font-size: 11px;
+    }
+    
+    .admin_single_blog__modify {
+        width: 100%;
+    }
+
+
+    #edit_blog{
+        border-radius: 0 0 0 10px;
+    }
+
+    #delete_blog {
+        border-radius: 0 0 10px 0;
+    }
+
+    .admin_modify_tags {
+        flex-direction: column;
+    }
+
+    .create_tag_form {
+        width: 100%;
+    }
+
+    .admin_header__title {
+        padding: 5rem;
+    }
+    
 }

@@ -3,9 +3,9 @@ import dotenv from 'dotenv'
 
 dotenv.config({ path: './src/.env'})
 
-const ONLINE_MONGODB = process.env.ONLINE_MONGODB
+const MONGODB_URI = process.env.MONGODB_URI
 //const URI = 'mongodb://localhost:27017/portfolio-api'
-export const connect = (uri=ONLINE_MONGODB) => {
+export const connect = (uri=MONGODB_URI) => {
     return mongoose.connect(
         uri,
         { 

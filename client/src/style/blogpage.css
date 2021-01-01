@@ -138,12 +138,12 @@ html {
         flex-direction: column;
     }
 
-    .header__title {
+    .blog_header__title {
         padding: 5rem;
     }
 
     .singleblog_content {
-        font-size: 17px;
+        font-size: 16px;
     }
 
 }
