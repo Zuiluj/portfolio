@@ -1,6 +1,9 @@
 import axios from 'axios';
 import React, { Component } from 'react';
 import { BsChevronLeft, BsChevronRight } from 'react-icons/bs';
+import { HiRefresh } from 'react-icons/hi';
+
+import { getReq } from '../services/apiReq.component';
 
 export default class PageSwitcher extends Component {
     constructor(props) {
@@ -46,4 +49,27 @@ export default class PageSwitcher extends Component {
             </div>
         )
     }
+}
+
+const PageNavigator = (props) => {
+
+    function next() {
+        
+    }
+
+    function prev() {
+
+    }
+
+    function refresh() {
+
+    }
+
+    return (
+        <div className="page_switcher">
+            <button className="page_switcher__btn" onClick={prev}> <BsChevronLeft/> </button>
+            <button className="page_switcher__btn" onClick={next}> <BsChevronRight/> </button>
+            <button className="page_switcher__btn" onClick={refresh}> <HiRefresh /> </button>
+        </div>
+    )
 }

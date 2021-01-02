@@ -1,12 +1,9 @@
 import React, { Component } from 'react';
 import { Layout, Divider, Tag, notification } from 'antd';
-import { convertFromRaw, EditorState } from 'draft-js';
 import { FiChevronsDown } from 'react-icons/fi';
-import { Editor } from 'react-draft-wysiwyg';
 import { RiFacebookCircleLine, RiTwitterLine, RiLinkedinLine } from 'react-icons/ri'
-import { graphql } from 'gatsby';
+import ReactMarkdown from 'react-markdown';
 
-import 'react-draft-wysiwyg/dist/react-draft-wysiwyg.css';
 
 import '../../style/blogpage.css'
 
@@ -49,18 +46,13 @@ export default class SingleBlog extends Component {
                         fontFamily: 'Unica One'
                     }}> <FiChevronsDown /> </Divider> 
                     <div className="singleblog_date"> 
-                        Created at: { blog.createdDate } <br/>
-                        Updated at: { blog.updatedDate }
+                        Created at: { new Date(blog.created_at).toDateString() } <br/>
+                        Updated at: { new Date(blog.updated_at).toDateString() }
                     </div>
                     
-                    {/* <div className="singleblog_content">
-                        <Editor
-                            toolbarHidden
-                            editorState={ blog.content }
-                            editorClassName="singleblog_content__editor"
-                            readOnly={true}
-                        />
-                    </div> */}
+                    <div className="singleblog_content">
+                        <ReactMarkdown source={ blog.content }/>
+                    </div>
                 </div>
             </Content>
         );

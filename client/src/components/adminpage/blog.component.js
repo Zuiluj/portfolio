@@ -22,7 +22,6 @@ class ConfigureBlog extends Component {
         }
 
         this.changeFormValues = this.changeFormValues.bind(this);
-        this.openNotif = this.openNotif.bind(this);
         this.clearContent = this.clearContent.bind(this);
     }
     
@@ -40,14 +39,6 @@ class ConfigureBlog extends Component {
                     blogs: res.data.data
                 })
             })
-    }
-
-    openNotif(msg, type, desc) {
-        this.setState({})
-        notification[type]({
-            message: msg,
-            description: desc
-        })
     }
 
     changeFormValues(blog) {

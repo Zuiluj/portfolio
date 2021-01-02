@@ -1,21 +1,24 @@
 import React from 'react';
 import { Button, Form, Input } from 'antd';
-import { BsTrash} from 'react-icons/bs'
+import { BsTrash} from 'react-icons/bs';
+
+import { authDelReq } from '../services/apiReq.component';
 
 const TagList = (props) => {
 
-    function handleModalDeleteClick() {
-        console.log(`BEEP DELETE TAG`)
+    async function handleDeleteClick(tag) {
+        await authDelReq(`/api/auth/blogs/tags/${tag._id}`, {},
+           { message: `Tag Delete Success`, desc: `Tag: '${tag.name}' deleted!` }
+        )
     }
 
     return (
         <div className="admin_tags">
-            {
-                props.tags.map( (tag) => 
+            { props.tags.map( (tag) => 
                     <Tag
                         key={tag._id}
                         tag={tag}
-                        deleteBtn={handleModalDeleteClick}
+                        handleDeleteClick={ handleDeleteClick }
                     />
                 )
             }
@@ -30,7 +33,7 @@ const Tag = (props) => {
             <div className="admin_single_tag__text">
                 { props.tag.name }
             </div>
-            <button className="admin_single_tag__delete_btn" id="delete_tag" onClick={ props.handleDeleteBtn } > < BsTrash /> </button>
+            <button className="admin_single_tag__delete_btn" id="delete_tag" onClick={ () => props.handleDeleteClick(props.tag) } > < BsTrash /> </button>
         </div>
     )
 }

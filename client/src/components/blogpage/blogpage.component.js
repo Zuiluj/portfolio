@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 import { navigate } from "@reach/router";
 import { Link, graphql } from "gatsby";
-import { Layout, Card, notification, Tag, Form, Select, DatePicker, Button, Input } from 'antd';
-import { stateToHTML } from 'draft-js-export-html';
+import { Layout, Card, Tag, Form, Select, DatePicker, Button, Input } from 'antd';
 import 'antd/dist/antd.less';
-import axios from 'axios';
-import { convertFromRaw } from 'draft-js';
-import queryString from 'query-string'
-import ReactHtmlParser from 'react-html-parser';
+import ReactMarkdown from 'react-markdown';
+import queryString from 'query-string';
 
 import { getReq } from '../services/apiReq.component';
 import PageTitle from '../allpage/pageTitle.component';
@@ -24,7 +21,6 @@ export default class BlogPage extends Component {
             prevY: 0
         }
 
-        this.openNotif = this.openNotif.bind(this);
         this.handleObserver = this.handleObserver.bind(this);
         this.getBlogs = this.getBlogs.bind(this);
     }
@@ -77,17 +73,7 @@ export default class BlogPage extends Component {
                         blogs: response.data.data
                     })
                 })
-                .catch( (err) => {
-                    this.openNotif('Error!', 'error', JSON.stringify(err.response.data) || JSON.stringify(err.message))
-                })
         }
-    }
-
-    openNotif(msg, type, desc) {
-        notification[type]({
-            message: msg,
-            description: desc
-        })
     }
 
     render() {    
@@ -118,7 +104,7 @@ export default class BlogPage extends Component {
                                     key={ blog._id }
                                 >
                                     <div className="content_peek">
-                                        { ReactHtmlParser(stateToHTML(convertFromRaw(JSON.parse(blog.content)))) }
+                                        <ReactMarkdown source={blog.content} />
                                     </div>
                                     <div className="blogs_date"> Created: { new Date(blog.created_at).toDateString() } </div>
                                     <div className="blog_tags"> { blog.tags.map( (tag) => <Tag key={tag}> { tag } </Tag> ) } </div>
@@ -159,9 +145,6 @@ class BlogsFilter extends Component {
             this.setState({
                 tags: response.data.data
             })
-        })
-        .catch( (err) => {
-            this.openNotif('Error!', 'error', JSON.stringify(err.response.data) || JSON.stringify(err.message))
         })
     }
 

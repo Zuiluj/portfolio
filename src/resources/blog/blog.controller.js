@@ -27,7 +27,7 @@ export const getManyBlog = async function(req, res) {
     ]
 
     let page = req.query.page ? decodeURIComponent(req.query.page) : undefined
-    let limit = 5
+    let limit = 20
     
     let queries = []
     for (let query of rawQueries) {

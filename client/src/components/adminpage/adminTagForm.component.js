@@ -14,14 +14,14 @@ const TagForm = (props) => {
     function submitTag(props) {
         authPostReq('/api/auth/blogs/tags', {
                 name: props.tag_name
+            }, { 
+                message: `Tag created!`, 
+                desc: `Tag: '${props.tag_name}' created.` 
             })
                 .then( (response) => {
                     if (response.status === 201) {
                         clearForm();
                     }
-                })
-                .catch( (err) => {
-                    
                 })
     }
 

@@ -55,14 +55,13 @@ exports.sourceNodes = async ({ actions, createNodeId, createContentDigest}) => {
     const { createNode } = actions
 
     let allTags = await getAllTags();
-    let currentPage = await getAllBlogs();
-    let allBlogs = [...currentPage];
-    let i, prevPage, nextPage = [1, [], []]
-    while (!nextPage || currentPage === prevPage)  {
-        prevPage = currentPage;
-        currentPage = await getAllBlogs(i);
-        nextPage = await getAllBlogs(i + 1);
-        allBlogs.push(currentPage);
+    let allBlogs = []
+    let blogList = await getAllBlogs();
+    let i = 1;
+    while ( blogList.length != 0 ) {
+        allBlogs.push(...blogList)
+        blogList = await getAllBlogs(i);
+        i += 1;
     }
 
     allTags.forEach( (tag) => createNode(processBlogTag(tag, createNodeId, createContentDigest)))
@@ -81,6 +80,8 @@ exports.createPages = async ({ graphql, actions: { createPage }}) => {
                     tags
                     title
                     content
+                    created_at
+                    updated_at
                 }
             }
         }

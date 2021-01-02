@@ -16,37 +16,33 @@ const AdminBlogForm = (props) => {
 
     async function submitForm (form) {
         let blogContent = props.currentBlog.content
-        console.log(`@ADMIN BLOG FORM: UPDATE? ${props.isUpdateReq}`)
         if (props.isUpdateReq) {
             await authPutReq(`/api/auth/blogs/${props.currentBlog._id}`, {
                 title: form.blog_title,
                 tags: form.blog_tags,
                 content: blogContent
+            }, {
+                message: `Blog updated successfully~`,
+                desc: `Blog: '${form.blog_title}' updated!`
             })
                 .then( (response) => {
-                    // TODO: 
                     if (response.status === 200) {
-                        // clear form
                         props.clearContent()
                     }
-                })
-                .catch( (err) => {
-                    
                 })
         } else {
             await authPostReq('/api/auth/blogs', {
                 title: form.blog_title,
                 tags: form.blog_tags,
                 content: blogContent
+            }, {
+                message: `Blog created successfully~`,
+                desc: `Blog: '${form.blog_title}' created!`
             })
                 .then( (response) => {
-                    if (response.status === 200) {
-                        // clear form
+                    if (response.status === 201) {
                         props.clearContent()
                     }
-                })
-                .catch( (err) => {
-                   
                 })
         }
 

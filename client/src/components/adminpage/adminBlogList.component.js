@@ -6,21 +6,11 @@ import { authDelReq } from '../services/apiReq.component';
 const BlogList = (props) => {
 
     function handleDeleteClick(blog) {
-        authDelReq(`/api/auth/blogs/${blog._id}`)
-            .then( (response) => {
-                // if (response.status === 200) {
-                //     this.setState({
-                //         confirmLoading: false,
-                //         modalVisible: false,
-                //         currentBlogId: ''
-                //     })
-                // }
-                // this.openNotif('Blog deleted!', 'success', 'Blog was successfully deleted! Klik-klank!')
-                
-            })
-            .catch( (err) => {
-                // this.openNotif('Error!', 'error', JSON.stringify(err.response.data) || JSON.stringify(err.message))
-            })
+        authDelReq(`/api/auth/blogs/${blog._id}`, {},
+        {
+            message: `Blog successfully deleted!`,
+            desc: `Blog: '${blog.title}' deleted!`
+        })
     }
 
     return (
