@@ -3,7 +3,8 @@ import { Row, Col, Button, Form, Input, Select, notification } from 'antd';
 
 import AdminBlogForm from '../adminpage/adminBlogForm.component';
 import BlogList from './adminBlogList.component';
-import { getReq, authPostReq, authPutReq, authDelReq } from '../services/apiReq.component';
+import { getReq } from '../services/apiReq.component';
+import PageNavigator from '../allpage/pageswitcher.component';
 import '../../style/adminBlog.css'
 
 class ConfigureBlog extends Component {
@@ -15,16 +16,16 @@ class ConfigureBlog extends Component {
             tags: [],
             blogs: [],
             currentBlog: {},
-
-            modalVisible: false,
-            confirmLoading: false,
-            modalErrors: ''
+            blogPage: 0,
         }
 
         this.changeFormValues = this.changeFormValues.bind(this);
         this.clearContent = this.clearContent.bind(this);
+        this.nextPage = this.nextPage.bind(this);
+        this.prevPage = this.prevPage.bind(this);
+        this.refresh = this.refresh.bind(this);
     }
-    
+
     componentDidMount() {
         getReq('/api/blogs/tags')
             .then( (res) => {
@@ -72,6 +73,37 @@ class ConfigureBlog extends Component {
         })
     }
 
+    nextPage() {
+        getReq(`/api/blogs?page=${this.state.blogPage + 1}`)
+            .then( (res) => {
+                this.setState({
+                    blogs: res.data.data,
+                    blogPage: this.state.blogPage + 1,
+                })
+            })
+    }
+
+    prevPage() {
+        if (!this.state.blogPage < 1) {
+            getReq(`/api/blogs?page=${this.state.blogPage - 1}`)
+            .then( (res) => {
+                this.setState({
+                    blogs: res.data.data,
+                    blogPage: this.state.blogPage - 1,
+                })
+            })
+        }
+    }
+
+    refresh() {
+        getReq(`/api/blogs?page=${this.state.blogPage}`)
+            .then( (res) => {
+                this.setState({
+                    blogs: res.data.data
+                })
+            })
+    }
+
     render() {
         return (
             <div className="configureBlogs">
@@ -93,7 +125,13 @@ class ConfigureBlog extends Component {
                             blogs={this.state.blogs}
                             changeFormValues={this.changeFormValues}
                             openNotif={this.openNotif}
-                        /> 
+                        />
+
+                        <PageNavigator 
+                            prev={this.prevPage}
+                            next={this.nextPage}
+                            refresh={this.refresh}
+                        />
                     </Col>
                 </Row>
             </div>

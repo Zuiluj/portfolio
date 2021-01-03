@@ -15,7 +15,7 @@ export const getOneBlog = async function(req, res) {
         res.status(200).json({ data: doc })
     } catch (err) {
         console.error(err)
-        res.status(400).end()
+        res.status(400).json(err)
     }
 }
 
@@ -84,7 +84,7 @@ export const updateBlog = async function(req, res) {
         res.status(200).send({ data: doc })
     } catch (err) {
         console.error(err)
-        res.status(400).end()
+        res.status(400).json(err)
     }
 }
 
@@ -99,7 +99,7 @@ export const deleteBlog = async function(req, res) {
         return res.status(200).json({ data: removed })
     } catch (err) {
         console.error(err)
-        return res.status(400).end()
+        return res.status(400).json(err)
     }
 }
 
@@ -112,7 +112,7 @@ export const getAllTags = async function(req, res) {
         res.status(200).json({ data: docs })
     } catch(err) {
             console.error(err)
-            res.status(400).end()
+            res.status(400).json(err)
     }
 }
 
@@ -133,7 +133,7 @@ export const updateTag = async function(req, res) {
         res.status(200).send({ data: doc })
     } catch (err) {
         console.error(err)
-        res.status(400).end()
+        res.status(400).json(err)
     }
 }
 
@@ -143,7 +143,7 @@ export const createTag = async function(req, res) {
         res.status(201).json({ data: doc })
     } catch (err) {
         console.error(err)
-        res.status(400).end()
+        res.status(400).json(err)
     }
 }
 
@@ -158,7 +158,7 @@ export const deleteTag = async function(req, res) {
         return res.status(200).json({ data: removed })
     } catch (err) {
         console.error(err)
-        return res.status(400).end()
+        return res.status(400).json(err)
     }
 }
 
@@ -168,6 +168,6 @@ export const uploadPhotoForBlog = async function(req, res) {
 
     } catch (err) {
         console.error(err)
-        return res.status(400).end()
+        return res.status(400).json(err)
     }
 }

@@ -21,11 +21,12 @@ export const authPostReq = ( async (url, body={}, notice={}) => {
             openNotif(notice.message, 'success', notice.desc)
         })
         .catch( (err) => {
-            if (err.response.data.message.name === 'TokenExpiredError') {
+            if (err.response?.data?.message?.name === 'TokenExpiredError') {
                 navigate('/admin/login')
             } else {
-                openNotif('Error!', 'error', err || JSON.stringify(err.message))
-                throw err
+                openNotif('Error!', 'error', JSON.stringify(err.message) || JSON.stringify(err))
+                console.log(`@ELSE BLOCK`)
+                response = err
             }
         })
     return response
@@ -39,11 +40,12 @@ export const authGetReq = ( async (url, body={}, notice={}) => {
             openNotif(notice.message, 'success', notice.desc)
         })
         .catch( (err) => {
-            if (err.response.data.message.name === 'TokenExpiredError') {
+            if (err.response?.data?.message?.name === 'TokenExpiredError') {
                 navigate('/admin/login')
             } else {
-                openNotif('Error!', 'error', err || JSON.stringify(err.message))
-                throw err
+                openNotif('Error!', 'error', JSON.stringify(err.message) || JSON.stringify(err))
+                console.log(`@ELSE BLOCK`)
+                response = err
             }
         })
     return response
@@ -57,11 +59,12 @@ export const authPutReq = ( async (url, body={}, notice={}) => {
             openNotif(notice.message, 'success', notice.desc)
         })
         .catch( (err) => {
-            if (err.response.data.message.name === 'TokenExpiredError') {
+            if (err.response?.data?.message?.name === 'TokenExpiredError') {
                 navigate('/admin/login')
             } else {
-                openNotif('Error!', 'error', err || JSON.stringify(err.message))
-                throw err
+                openNotif('Error!', 'error', JSON.stringify(err.message) || JSON.stringify(err))
+                console.log(`@ELSE BLOCK`)
+                response = err
             }
         })
     return response
@@ -75,11 +78,12 @@ export const authDelReq = ( async (url, body={}, notice={}) => {
             openNotif(notice.message, 'success', notice.desc)
         })
         .catch( (err) => {
-            if (err.response.data.message.name === 'TokenExpiredError') {
+            if (err.response?.data?.message?.name === 'TokenExpiredError') {
                 navigate('/admin/login')
             } else {
-                openNotif('Error!', 'error', err || JSON.stringify(err.message))
-                throw err
+                openNotif('Error!', 'error', JSON.stringify(err.message) || JSON.stringify(err))
+                console.log(`@ELSE BLOCK`)
+                response = err
             }
         })
     return response

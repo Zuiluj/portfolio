@@ -3,13 +3,18 @@ import { Button, Form, Input } from 'antd';
 import { BsTrash} from 'react-icons/bs';
 
 import { authDelReq } from '../services/apiReq.component';
+import ModalConfirm from '../allpage/modal.component';
 
 const TagList = (props) => {
 
-    async function handleDeleteClick(tag) {
-        await authDelReq(`/api/auth/blogs/tags/${tag._id}`, {},
-           { message: `Tag Delete Success`, desc: `Tag: '${tag.name}' deleted!` }
-        )
+    function handleDeleteClick(tag) {
+        ModalConfirm({ 
+            desc: `Tag to be deleted: '${tag.name}'`,
+            onConfirm: () => { authDelReq(`/api/auth/blogs/tags/${tag._id}`, {},
+                    { message: `Tag Delete Success`, desc: `Tag: '${tag.name}' deleted!` }
+                )
+            }
+        });
     }
 
     return (

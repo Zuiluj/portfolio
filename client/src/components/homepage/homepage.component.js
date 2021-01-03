@@ -42,6 +42,14 @@ export default class HomePage extends Component {
     }
 
     render() {
+        const dividerTextStyle = { 
+            color: '#33968B', 
+            fontSize: '30px', 
+            lineHeight: '30px',
+            mixBlendMode: 'darken',
+            margin: '3rem 0',
+            fontFamily: 'Reem Kufi'
+        }
         return (
             <Content className="intro">
                 <div id="home" className="home">
@@ -62,19 +70,19 @@ export default class HomePage extends Component {
                 </div>
 
                 <div id="works" className="works">
-                    <Divider orientation="center" className="works__divider" style={{ 
-                        color: '#33968B', 
-                        fontSize: '40px', 
-                        lineHeight: '30px',
-                        mixBlendMode: 'darken',
-                        margin: '3rem 0',
-                        fontFamily: 'Reem Kufi'
-                    }}>
+                    <Divider orientation="center" className="works__divider" style={dividerTextStyle}>
                         WEB WORKS
                     </Divider>
 
                     <Row justify="space-around" gutter={[5, 20]} style={{ margin: "0 2rem" }}>
-                        <Col span={23}>
+                        <Col span={14}>
+                            <SampleWork 
+                                background={`url( ${ require('../../img/works-pixelart.jpeg') } )`}
+                                link={`https://codepen.io/JulzChristian/full/mdryxgd`}
+                                name={`JS Canvas Pixel Art Editor`}
+                            />
+                        </Col>
+                        <Col span={8}>
                             <SampleWork 
                                 background={`url( ${ require('../../img/works-digestiveimprovement.webp') } )`}
                                 link={`https://digestiveimprovement.com/`}
@@ -106,14 +114,7 @@ export default class HomePage extends Component {
                 </div>
 
                 
-                <Divider orientation="center" id="about" style={{ 
-                        color: '#33968B', 
-                        fontSize: '40px', 
-                        lineHeight: '30px',
-                        mixBlendMode: 'darken',
-                        margin: '3rem 0',
-                        fontFamily: 'Reem Kufi'
-                    }}>
+                <Divider orientation="center" id="about" style={dividerTextStyle}>
                         ABOUT ME
                 </Divider>
                 
@@ -121,23 +122,15 @@ export default class HomePage extends Component {
                     <div className="about__text">
                     I'm  a  full-stack  developer  who  enjoys  building creative  solutions  to  complex  problems.
                     I  love learning  new  technologies  as  it  expands  my mind's  library  for  more  innovative
-                    features. Interested  in  creating  crazy  animations  andmodern  sites  using  ever-evolving  
-                    JavaScript and implementing complex architectures with Python.
+                    features. Interested  in  sparking and improving people's creativity using Python and JavaScript.
                     </div>
                 </div>
 
                 <div id="contact" className="contact"> 
                     
-                    <Divider orientation="center" style={{ 
-                        color: '#33968B', 
-                        fontSize: '40px', 
-                        lineHeight: '30px',
-                        mixBlendMode: 'darken',
-                        margin: '3rem 0',
-                        fontFamily: 'Reem Kufi'
-                    }}>
-                        CONTACT
-                    </Divider>
+                <Divider orientation="center" style={dividerTextStyle}>
+                    CONTACT
+                </Divider>
 
                     <div className="contact__form">
 

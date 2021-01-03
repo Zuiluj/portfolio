@@ -1,16 +1,22 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect } from 'react';
 import { BsTrash, BsPen } from 'react-icons/bs';
 
 import { authDelReq } from '../services/apiReq.component';
+import ModalConfirm from '../allpage/modal.component';
 
 const BlogList = (props) => {
+    useEffect( () => {}, [props.blogs])
 
     function handleDeleteClick(blog) {
-        authDelReq(`/api/auth/blogs/${blog._id}`, {},
-        {
-            message: `Blog successfully deleted!`,
-            desc: `Blog: '${blog.title}' deleted!`
-        })
+        ModalConfirm({ 
+            desc: `Blog to be deleted: '${blog.title}'`,
+            onConfirm: () => { authDelReq(`/api/auth/blogs/${blog._id}`, {},
+                {
+                    message: `Blog successfully deleted!`,
+                    desc: `Blog: '${blog.title}' deleted!`
+                })
+            }
+        });
     }
 
     return (
