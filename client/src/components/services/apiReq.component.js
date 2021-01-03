@@ -102,11 +102,12 @@ export const getReq = ( async (url) => {
     return response
 })
 
-export const postReq = ( async (url, body={}) => {
+export const postReq = ( async (url, body={}, notice={}) => {
     let response = {}
     await axios.post(url, body)
         .then( (res) => {
             response = res
+            openNotif(notice.message, 'success', notice.desc)
         })
         .catch ( (err) => {
             openNotif('Error!', 'error', err || JSON.stringify(err.message))

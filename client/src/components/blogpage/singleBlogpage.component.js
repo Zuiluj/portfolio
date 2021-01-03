@@ -1,7 +1,8 @@
 import React from 'react';
 import { Layout, Divider, Tag } from 'antd';
 import { FiChevronsDown } from 'react-icons/fi';
-import { RiFacebookCircleLine, RiTwitterLine, RiLinkedinLine } from 'react-icons/ri'
+import { RiFacebookCircleLine, RiTwitterLine, RiLinkedinLine } from 'react-icons/ri';
+import { Location } from '@reach/router';
 import ReactMarkdown from 'react-markdown';
 
 
@@ -21,7 +22,9 @@ const SingleBlog = (props) =>{
                     { props.blog.tags.map( (tag) => <Tag> { tag } </Tag> ) }
                 </div>
                 <div className="singleblog_share">
-                    <ShareButtons location={props.location}/>
+                    <Location>
+                        { locationProps => <ShareButtons {...locationProps}/> }
+                    </Location>
                 </div>
                 <Divider orientation="center" style={{ 
                     color: '#33968B', 
@@ -45,7 +48,8 @@ const SingleBlog = (props) =>{
 }
 
 const ShareButtons = (props) => {
-    const currentUrl = props.location;
+    const { location } = props;
+    const currentUrl = location.href;
     
     const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${currentUrl}`;
     const twitterUrl = `https://twitter.com/intent/tweet?url=${currentUrl}`;
@@ -57,6 +61,7 @@ const ShareButtons = (props) => {
             color: props.color || "black",
             fontSize: props.fontSize || 25
         }}>
+            <p> {currentUrl} </p>
             <a href={ facebookUrl } target="_blank" rel="noopener noreferrer"> <RiFacebookCircleLine /> </a>
             <a href={ twitterUrl } target="_blank" rel="noopener noreferrer"> <RiTwitterLine /> </a>
             <a href={ linkedinUrl } target="_blank" rel="noopener noreferrer"> <RiLinkedinLine /> </a>
