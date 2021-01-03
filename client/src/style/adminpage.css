@@ -34,109 +34,33 @@ html {
     background: black;
     color: white;
     height: 4rem;
-}
-
-.submit_blog {
-    padding: 5rem;
-    width: 60%;
-    margin: 0 auto;
-}
-
-.blog_title__input {
-    font-size: 40px;
-}
-
-/* Create Blogs */
-.create_blog__submit_btn {
-    margin: 1rem 0;
-    width: 100%;
-    height: 5rem;
-}
-
-.textedit_editor {
-    min-height: 20rem;
-    background: #E9E9E9;
-    padding: 1rem;
-}
-
-/* Admin Tags create and delete */
-.admin_tags {
-
-}
-
-.create_tag_form {
-    text-align: center;
-    width: 60%;
-    margin: 0 auto;
-}
-
-.admin_create_tags {
-    width: 80%;
-    margin: 0 auto;
-}
-
-.tag_name__input {
-    font-size: 20px;
-}
-
-.create_tag__btn {
-    margin: 0.2rem 0;
     width: 100%;
 }
 
-.admin_modify_tags {
+/* Page switcher */
+.page_switcher {
     display: flex;
-    flex-wrap: wrap;
-    flex-direction: row;
-    max-height: 30rem;
-    overflow: scroll;
-    width: 80%;
-    margin: 0 auto;
-    overflow-x: hidden;
-    justify-content: center;
+    margin: 30px;
+    font-size: 25px;
 }
 
-.admin_single_tag {
-    text-align: center;
-    flex: 0 0 20%;
+.page_switcher__btn {
     display: flex;
-    flex-direction: row;
     align-items: center;
-    margin: 0.5rem;
-    min-width: 20%;
-    justify-content: space-between;
-    border-radius: 10px;
-}
+    padding: 10px;
 
-.admin_single_tag:hover {
-    box-shadow: 0px 0px 15px #bdbdbd;
-    transition: 0.3s ease;
-}
-
-.admin_single_tag__text {
-    margin: 0 auto;
-}
-
-#delete_tag {
-    color: #20959f;
-    padding: 1rem;
-    background: transparent;
     border: none;
     cursor: pointer;
-    width: 50%;
-    font-size: 20px;
-    border-radius: 0 10px 10px 0;
+    color: #20959f;
 }
 
-#delete_tag:hover {
-    background: #fd3f40;
+.page_switcher__btn:hover {
     color: white;
+    background: #20959f;
     transition: 0.3s ease;
 }
 
-.modal_errors {
-    color: red;
-}
+/* Admin Blog List */ 
 
 /* Update and Delete Blogs */
 .admin_blogs {
@@ -210,31 +134,22 @@ html {
     transition: 0.3s ease;
 }
 
-/* Page switcher */
-.page_switcher {
+
+/* Admin Parent */
+.admin {
     display: flex;
-    margin: 30px;
-    font-size: 25px;
+    flex-direction: column;
 }
 
-.page_switcher__btn {
-    display: flex;
-    align-items: center;
-    padding: 10px;
-
-    border: none;
-    cursor: pointer;
-    color: #20959f;
-}
-
-.page_switcher__btn:hover {
-    color: white;
-    background: #20959f;
-    transition: 0.3s ease;
+/* Admin tabs */
+.admin_tabs {
+    margin: 0 2rem;
+    justify-self: center;
+    align-self: center;
+    width: 80%;
 }
 
 @media only screen and (max-width: 800px) {
-
     .submit_blog {
         padding: 1rem;
         width: 100%;
@@ -252,7 +167,7 @@ html {
     .admin_single_blog__modify {
         width: 100%;
     }
-    
+
 
     #edit_blog{
         border-radius: 0 0 0 10px;
@@ -269,4 +184,9 @@ html {
     .create_tag_form {
         width: 100%;
     }
+
+    .admin_header__title {
+        padding: 5rem;
+    }
+    
 }

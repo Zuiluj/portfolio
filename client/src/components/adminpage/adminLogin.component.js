@@ -1,41 +1,41 @@
-import React, { Component } from 'react';
 import { Layout, Input, Button, Form } from 'antd';
+import React, { Component } from 'react';
+import { navigate } from "@reach/router";
 import axios from 'axios';
 import 'antd/dist/antd.less';
 
+import { postReq } from '../services/apiReq.component'
 import '../../style/adminloginpage.css';
 
 const { Header, Content } = Layout
 
+axios.defaults.withCredentials = true;
 export default class AdminLoginPage extends Component {
     constructor(props) {
         super(props)
         this.state = {
             form_error: ""
         }
-
         this.loginUser = this.loginUser.bind(this)
     }
 
-    loginUser(props) {
+    async loginUser (props) {
         // connect to API to login
-        axios.post('/api/login/', {
-            username: props.username,
-            password: props.password
+        await postReq('/api/login', { 
+            username: props.username, 
+            password: props.password 
         })
             .then( (response) => {
                 // Redirect after successful login
                 if (response.status === 200) {
-                    this.props.history.push('/admin')
+                    navigate(this.props.redirectPath)
                 }
-                
             })
             .catch( (err) => {
                 this.setState({
                     form_error: "Wrong username or password"
                 })
             })
-        
     }
 
     render() {

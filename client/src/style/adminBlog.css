@@ -1,0 +1,14 @@
+.configureBlogs {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.configureBlogs__btn {
+    width: 100%;
+}
+
+#md_editor {
+    margin: 1rem 0;
+    width: 100%;
+    height: auto;
+}
