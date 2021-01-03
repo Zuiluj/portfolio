@@ -13,7 +13,7 @@ import { createAdmin, checkAdmin, logoutAdmin, authRequired, generateSecretKey, 
 dotenv.config();
 
 const app = express()
-const PORT = process.env.PORT || 5000
+const PORT = process.env.PORT || 8000
 
 const corsConfig = {
     origin: true,
@@ -72,4 +72,5 @@ const start = async () => {
 }
 
 // Start server
+export { app };
 start()

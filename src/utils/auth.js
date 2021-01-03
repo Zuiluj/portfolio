@@ -6,6 +6,7 @@ import crypto from 'crypto'
 
 import { Admin } from '../resources/admin/admin.model'
 import { apiKey } from '../resources/key/key.model'
+import { app } from '../index'
 
 dotenv.config({ path: './src/.env'})
 const JWT_SECRET = process.env.JWT_SECRET
@@ -72,9 +73,9 @@ export const checkAdmin = async function(req, res) {
 
         res.cookie('token', token, {
             expires: new Date(Date.now() + JWT_EXP),
-            secure: false, // set to True when you are using https
-            httpOnly: true, // turn true to not be accessed by js
-            sameSite: true
+            httpOnly: true,
+            sameSite: app.get("env") === "development" ? true : "none",
+            secure: app.get("env") === "development" ? false : true,
         })
 
         // SPA cookie for react router
@@ -84,7 +85,6 @@ export const checkAdmin = async function(req, res) {
             httpOnly: false, 
             sameSite: true
         })
-        
         return res.status(200).send({ token })
     } catch (err) {
         console.error(err)

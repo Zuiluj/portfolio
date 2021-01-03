@@ -2,6 +2,7 @@ html {
     box-sizing: border-box;
     padding: 0;
     margin: 0;
+    scroll-behavior: smooth;
 }
 
 *, *::before, *::after {
@@ -112,7 +113,7 @@ html {
 }
 
 .about__text {
-    font-size: 30px;
+    font-size: 1.5rem;
     text-align: right;
     width: 40%;
     color: white;
@@ -166,6 +167,7 @@ html {
 
     .about__text {
         width: 100%;
+        padding: 2rem;
     }
     
     .works_single__text a {
@@ -173,4 +175,20 @@ html {
         border-radius: 0px;
         width: 100%;
     }
+
+    .footer {
+        grid-template-columns: 50% 50%;
+        word-wrap: break-word;
+    }
+
+    .footer__contact {
+        grid-column: 1 / 2;
+        padding: 0 1rem;
+    }
+  
+    .footer__social {
+        grid-column: 2 / 3;
+        padding: 0 1rem;
+    }
+
 }
