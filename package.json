@@ -31,8 +31,8 @@
     "uuidv5": "^1.0.0"
   },
   "scripts": {
-    "start": "node -r esm src/index.js",
+    "start": "concurrently --kill-others \"yarn start\"  \"yarn build\" ",
     "dev": "nodemon -r esm src/index.js",
-    "heroku-postbuild": "concurrently --kill-others \"yarn start\"  \"cd client && yarn && yarn build\" "
+    "heroku-postbuild": "cd client && yarn"
   }
 }
