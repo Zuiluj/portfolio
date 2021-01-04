@@ -30,14 +30,14 @@ class ConfigureBlog extends Component {
         getReq('/api/blogs/tags')
             .then( (res) => {
                 this.setState({
-                    tags: res.data.data
+                    tags: res.data?.data || []
                 })
             })
 
         getReq('/api/blogs')
             .then( (res) => {
                 this.setState({
-                    blogs: res.data.data
+                    blogs: res.data?.data || []
                 })
             })
     }
@@ -77,7 +77,7 @@ class ConfigureBlog extends Component {
         getReq(`/api/blogs?page=${this.state.blogPage + 1}`)
             .then( (res) => {
                 this.setState({
-                    blogs: res.data.data,
+                    blogs: res.data?.data,
                     blogPage: this.state.blogPage + 1,
                 })
             })
@@ -88,7 +88,7 @@ class ConfigureBlog extends Component {
             getReq(`/api/blogs?page=${this.state.blogPage - 1}`)
             .then( (res) => {
                 this.setState({
-                    blogs: res.data.data,
+                    blogs: res.data?.data,
                     blogPage: this.state.blogPage - 1,
                 })
             })
@@ -99,7 +99,7 @@ class ConfigureBlog extends Component {
         getReq(`/api/blogs?page=${this.state.blogPage}`)
             .then( (res) => {
                 this.setState({
-                    blogs: res.data.data
+                    blogs: res.data?.data
                 })
             })
     }

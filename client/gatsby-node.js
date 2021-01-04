@@ -1,15 +1,15 @@
 const axios = require('axios');
-//axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = 'http://localhost:5000';
 
 const getAllBlogs = async (page = 0) => {
     return await axios.get(`/api/blogs?page=${page}`)
-        .then(res => res.data.data)
+        .then(res => res.data?.data || [])
         .catch(err => console.log(err))
 }
 
 const getAllTags = async (page = 0) => {
     return await axios.get(`/api/blogs/tags`)
-        .then(res => res.data.data)
+        .then(res => res.data?.data || [])
         .catch(err => console.log(err))
 }
 

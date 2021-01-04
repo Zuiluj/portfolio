@@ -24,7 +24,7 @@ class ConfigureTag extends Component {
         getReq('/api/blogs/tags')
             .then( (res) => {
                 this.setState({
-                    tags: res.data.data
+                    tags: res.data?.data || []
                 })
             })
     }
@@ -33,7 +33,7 @@ class ConfigureTag extends Component {
         getReq(`/api/blogs/tags?page=${this.state.tagPage + 1}`)
             .then( (res) => {
                 this.setState({
-                    tags: res.data.data,
+                    tags: res.data?.data || [],
                     tagPage: this.state.tagPage + 1,
                 })
             })
@@ -44,7 +44,7 @@ class ConfigureTag extends Component {
             getReq(`/api/blogs/tags?page=${this.state.tagPage - 1}`)
                 .then( (res) => {
                     this.setState({
-                        tags: res.data.data,
+                        tags: res.data?.data || [],
                         tagPage: this.state.tagPage - 1,
                     })
                 })
@@ -55,7 +55,7 @@ class ConfigureTag extends Component {
         getReq(`/api/blogs/tags?page=${this.state.tagPage}`)
             .then( (res) => {
                 this.setState({
-                    tags: res.data.data
+                    tags: res.data?.data || []
                 })
             })
     }

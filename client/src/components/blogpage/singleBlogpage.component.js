@@ -61,7 +61,6 @@ const ShareButtons = (props) => {
             color: props.color || "black",
             fontSize: props.fontSize || 25
         }}>
-            <p> {currentUrl} </p>
             <a href={ facebookUrl } target="_blank" rel="noopener noreferrer"> <RiFacebookCircleLine /> </a>
             <a href={ twitterUrl } target="_blank" rel="noopener noreferrer"> <RiTwitterLine /> </a>
             <a href={ linkedinUrl } target="_blank" rel="noopener noreferrer"> <RiLinkedinLine /> </a>

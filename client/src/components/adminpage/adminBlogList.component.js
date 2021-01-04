@@ -21,7 +21,7 @@ const BlogList = (props) => {
 
     return (
         <div className="admin_blogs">
-            { props.blogs.map( (blog) => {
+            { props.blogs?.map( (blog) => {
                     return <Blog 
                         key={ blog._id }
                         blog={blog}
