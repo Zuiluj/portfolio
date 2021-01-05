@@ -3,7 +3,7 @@ import { navigate } from '@reach/router';
 import axios from 'axios';
 import { notification } from 'antd';
 
-axios.defaults.baseURL = 'http://localhost:5000';
+// axios.defaults.baseURL = process.env.AXIOS_BASE_URL;
 axios.defaults.withCredentials = true;
 
 const openNotif = ( (msg, type, desc)  => {

@@ -3,14 +3,15 @@ module.exports = {
     title: `Juliuz Llanillo Portfolio`,
     description: `Web Dev Portfolio of Juliuz Christian Llanillo`,
     author: `@JuliuzLlanillo`,
+    url: "https://juliuzllanillo.com"
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
       resolve: `gatsby-source-filesystem`,
       options: {
-        name: `images`,
-        path: `${__dirname}/src/images`,
+        name: `img`,
+        path: `${__dirname}/src/img`,
       },
     },
     `gatsby-transformer-sharp`,
@@ -24,7 +25,7 @@ module.exports = {
         background_color: `#663399`,
         theme_color: `#663399`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/img/icon.png`, // This path is relative to the root of the site.
       }
     },
     {
