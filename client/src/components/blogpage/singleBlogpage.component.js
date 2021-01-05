@@ -5,7 +5,7 @@ import { RiFacebookCircleLine, RiTwitterLine, RiLinkedinLine } from 'react-icons
 import { Location } from '@reach/router';
 import ReactMarkdown from 'react-markdown';
 
-import SEO from "../components/seo";
+import SEO from '../seo';
 import '../../style/blogpage.css'
 
 const { Content } = Layout
