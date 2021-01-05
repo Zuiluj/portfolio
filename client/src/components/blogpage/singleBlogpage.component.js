@@ -5,7 +5,7 @@ import { RiFacebookCircleLine, RiTwitterLine, RiLinkedinLine } from 'react-icons
 import { Location } from '@reach/router';
 import ReactMarkdown from 'react-markdown';
 
-
+import SEO from "../components/seo";
 import '../../style/blogpage.css'
 
 const { Content } = Layout
@@ -14,6 +14,7 @@ const SingleBlog = (props) =>{
 
     return (
         <Content className="singleBlogParent">
+            <SEO title={props.blog.title}/>
             <div className="singleblog">    
                 <div className="singleblog_title"> 
                     { props.blog.title } 
