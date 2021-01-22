@@ -1,5 +1,5 @@
 const axios = require('axios');
-// axios.defaults.baseURL = 'http://localhost:5000';
+axios.defaults.baseURL = `http://localhost:${process.env.PORT}`;
 
 const getAllBlogs = async (page = 0) => {
     return await axios.get(`/api/blogs?page=${page}`)
