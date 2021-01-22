@@ -20,10 +20,16 @@ export default class AdminLoginPage extends Component {
     }
 
     async loginUser (props) {
+        var today = new Date();
+        var date = `${today.getFullYear()}-${today.getMonth()+1}-${today.getDate()}`;
+        var time = `${today.getHours()}:${today.getMinutes()}:${today.getSeconds()}`;
         // connect to API to login
         await postReq('/api/login', { 
             username: props.username, 
-            password: props.password 
+            password: props.password
+        }, {
+            message: 'Successful login!',
+            desc: `${props.username} logged in at ${date} ${time}`
         })
             .then( (response) => {
                 // Redirect after successful login
